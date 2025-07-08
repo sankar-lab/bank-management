@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Bank Management System</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+        h1 {
+            text-align: center;
+            color: #1a73e8;
+            margin-bottom: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .auth, .dashboard {
+            display: none;
+        }
+        .section {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #fafafa;
+            border-radius: 8px;
+        }
+        .section h2 {
+            color: #1a73e8;
+            margin-top: 0;
+        }
+        label {
+            display: block;
+            margin: 8px 0 4px;
+            font-weight: 500;
+        }
+        input, select, button {
+            padding: 10px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #1557b0;
+        }
+        .tab {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #e9ecef;
+            margin-right: 5px;
+            cursor: pointer;
+            border-radius: 5px 5px 0 0;
+        }
+        .tab.active {
+            background: #1a73e8;
+            color: white;
+        }
+        #output, #history {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .error {
+            color: #d93025;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="logo 2.jpg" alt="Logo">  
+                <h1>FEDERAL BANK</h1>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Search...">
+            </div>
+            <nav class="navbar">
+                <a href="home.html"><button>HOME</button></a>
+                <a href="about.html"><button>ABOUT US</button></a>
+                <a href="services.html"><button>SERVICES</button></a>
+                <a href="employs.html"><button>EMPLOYEES</button></a>
+
+                <a href="contact.html"><button>CONTACT</button></a>
+                <a href="login.html"><button>login</button></a>
+            </nav>
+        </div>
+    </header>
+
+    <h1>SERIVICES</h1>
+    <div class="container">
+        <!-- Authentication Section -->
+        <div class="auth" id="authSection">
+            <div class="section">
+                <h2>Login</h2>
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter username">
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter password">
+                <button onclick="login()">Login</button>
+            </div>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div class="dashboard" id="dashboard">
+            <div class="tabs">
+                <span class="tab active" onclick="showTab('core')">Core Services</span>
+                <span class="tab" onclick="showTab('additional')">Additional Services</span>
+            </div>
+
+            <!-- Core Banking Services -->
+            <div class="section" id="core">
+                <h2>Core Banking Services</h2>
+                <label for="accountType">Account Type:</label>
+                <select id="accountType">
+                    <option value="savings">Savings</option>
+                    <option value="checking">Checking</option>
+                    <option value="fixed">Fixed Deposit</option>
+                </select>
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" placeholder="Enter amount">
+                <button onclick="deposit()">Deposit</button>
+                <button onclick="withdraw()">Withdraw</button>
+                <button onclick="checkBalance()">Check Balance</button>
+
+                <label for="transferTo">Transfer To:</label>
+                <select id="transferTo">
+                    <option value="savings">Savings</option>
+                    <option value="checking">Checking</option>
+                    <option value="fixed">Fixed Deposit</option>
+                </select>
+                <button onclick="transfer()">Transfer</button>
+
+                <label for="loanType">Loan Type:</label>
+                <select id="loanType">
+                    <option value="mortgage">Mortgage</option>
+                    <option value="personal">Personal</option>
+                    <option value="business">Business</option>
+                    <option value="car">Car</option>
+                </select>
+                <button onclick="applyLoan()">Apply for Loan</button>
+                <button onclick="viewLoans()">View Loans</button>
+            </div>
+
+            <!-- Additional Financial Services -->
+            <div class="section" id="additional" style="display: none;">
+                <h2>Additional Financial Services</h2>
+                <label for="investmentType">Investment Type:</label>
+                <select id="investmentType">
+                    <option value="mutual funds">Mutual Funds</option>
+                    <option value="bonds">Bonds</option>
+                    <option value="stocks">Stocks</option>
+                </select>
+                <button onclick="invest()">Invest</button>
+
+                <button onclick="useCreditCard()">Use Credit Card</button>
+                <button onclick="payCreditCard()">Pay Credit Card</button>
+                <button onclick="useDebitCard()">Use Debit Card</button>
+
+                <label for="insuranceType">Insurance Type:</label>
+                <select id="insuranceType">
+                    <option value="life">Life Insurance</option>
+                    <option value="health">Health Insurance</option>
+                    <option value="property">Property Insurance</option>
+                </select>
+                <button onclick="buyInsurance()">Buy Insurance</button>
+
+                <button onclick="rentSafeDeposit()">Rent Safe Deposit Box</button>
+                <button onclick="getFinancialAdvice()">Get Financial Advice</button>
+                <button onclick="doorstepBanking()">Doorstep Banking</button>
+                <button onclick="remittance()">Remittance</button>
+            </div>
+
+            <!-- Output and History -->
+            <div id="output">Welcome to the Bank Management System!</div>
+            <div id="history">
+                <h3>Transaction History</h3>
+                <div id="historyList"></div>
+            </div>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-container">
+    
+            <!-- About Section -->
+            <div class="footer-section">
+                <h2>About Us</h2>
+                <p>We are dedicated to providing secure, efficient, and user-friendly banking solutions for individuals and businesses. Experience hassle-free financial management with us.</p>
+            </div>
+    
+            <!-- Services Section -->
+            <div class="footer-section">
+                <h2>Our Services</h2>
+                <ul>
+                    <li><a href="#accounts">Account Management</a></li>
+                    <li><a href="#loans">Loan Services</a></li>
+                    <li><a href="#investments">Investment Planning</a></li>
+                    <li><a href="#insurance">Insurance Solutions</a></li>
+                    <li><a href="#online-banking">Online Banking</a></li>
+                </ul>
+            </div>
+    
+            <!-- Quick Links Section -->
+            <div class="footer-section">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#careers">Careers</a></li>
+                    <li><a href="#faq">FAQs</a></li>
+                </ul>
+            </div>
+    
+            <!-- Contact Info Section -->
+            <div class="footer-section">
+                <h2>Contact Us</h2>
+                <p>Email: support@bankmanagement.com</p>
+                <p>Phone: +1 (234) 567-8901</p>
+                <p>Address: 123 Finance Street, Banking City</p>
+            </div>
+    
+            <!-- Newsletter Signup Section -->
+            <div class="footer-section">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter to receive the latest banking updates and offers.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+    
+            <!-- Custom Social Media Icons Section -->
+            <div class="footer-section">
+                <h2>Follow Us</h2>
+                <div class="custom-social-icons">
+                    <a href="#" class="icon facebook">facebook</a><br>
+                    <a href="#" class="icon twitter">twitter</a><br>
+                    <a href="#" class="icon linkedin">linkedin</a><br>
+                    <a href="#" class="icon instagram">instagram</a>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 Bank Management System. All rights reserved.</p>
+            <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms & Conditions</a></p>
+        </div>
+    </footer>
+    <script>
+        // Bank Management System Logic
+        class Account {
+            constructor(type, balance = 0) {
+                this.type = type;
+                this.balance = balance;
+            }
+            deposit(amount) {
+                if (amount > 0) {
+                    this.balance += amount;
+                    addHistory(`Deposited $${amount} to ${this.type}`);
+                    return `Deposited $${amount} to ${this.type}. New balance: $${this.balance}`;
+                }
+                return "Invalid deposit amount";
+            }
+            withdraw(amount) {
+                if (amount > 0 && amount <= this.balance) {
+                    this.balance -= amount;
+                    addHistory(`Withdrew $${amount} from ${this.type}`);
+                    return `Withdrew $${amount} from ${this.type}. New balance: $${this.balance}`;
+                }
+                return "Insufficient funds or invalid amount";
+            }
+            transfer(targetAccount, amount) {
+                if (amount > 0 && amount <= this.balance) {
+                    this.balance -= amount;
+                    targetAccount.balance += amount;
+                    addHistory(`Transferred $${amount} from ${this.type} to ${targetAccount.type}`);
+                    return `Transferred $${amount} from ${this.type} to ${targetAccount.type}. New balance: $${this.balance}`;
+                }
+                return "Transfer failed";
+            }
+        }
+
+        class Loan {
+            constructor(type, amount, interestRate) {
+                this.type = type;
+                this.amount = amount;
+                this.interestRate = interestRate;
+                this.remaining = amount;
+            }
+            calculateInterest() {
+                return (this.remaining * this.interestRate) / 100;
+            }
+        }
+
+        // Initialize state
+        const accounts = {
+            savings: new Account("savings", 1000),
+            checking: new Account("checking", 500),
+            fixed: new Account("fixed", 2000)
+        };
+        let creditCardBalance = 0;
+        let loans = [];
+        let investments = [];
+        let insurance = null;
+        let safeDepositBox = false;
+        let history = [];
+        let loggedIn = false;
+
+        // Authentication (simple simulation)
+        const validUser = { username: "user", password: "pass123" };
+
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            if (username === validUser.username && password === validUser.password) {
+                loggedIn = true;
+                document.getElementById("authSection").style.display = "none";
+                document.getElementById("dashboard").style.display = "block";
+                displayOutput("Logged in successfully!");
+            } else {
+                displayOutput("Invalid username or password", true);
+            }
+        }
+
+        function logout() {
+            loggedIn = false;
+            document.getElementById("authSection").style.display = "block";
+            document.getElementById("dashboard").style.display = "none";
+            displayOutput("Logged out successfully!");
+        }
+
+        // Tab switching
+        function showTab(tabName) {
+            document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
+            document.querySelector(`.tab[onclick="showTab('${tabName}')"]`).classList.add("active");
+            document.getElementById("core").style.display = tabName === "core" ? "block" : "none";
+            document.getElementById("additional").style.display = tabName === "additional" ? "block" : "none";
+        }
+
+        // Helper functions
+        function displayOutput(message, isError = false) {
+            const output = document.getElementById("output");
+            output.innerText = message;
+            output.className = isError ? "error" : "";
+        }
+
+        function addHistory(entry) {
+            history.push(`${new Date().toLocaleString()}: ${entry}`);
+            updateHistory();
+        }
+
+        function updateHistory() {
+            document.getElementById("historyList").innerHTML = history.map(h => `<p>${h}</p>`).join("");
+        }
+
+        // Core Banking Functions
+        function deposit() {
+            if (!loggedIn) return displayOutput("Please log in", true);
+            const accountType = document.getElementById("accountType").value;
+            const amount = parseFloat(document.getElementById("amount").value);
+            displayOutput(accounts[accountType].deposit(amount));
+        }
+
+        function withdraw() {
+            if (!loggedIn) return displayOutput("Please log in", true);
+            const accountType = document.getElementById("accountType").value;
+            const amount = parseFloat(document.getElementById("amount").value);
+            displayOutput(accounts[accountType].withdraw(amount));
+        }
+
+        function checkBalance() {
+            if (!loggedIn) return displayOutput("Please log in", true);
+            const accountType = document.getElementById("accountType").value;
+            displayOutput(`${accountType} balance: $${accounts[accountType].balance}`);
+        }
+
+        function transfer() {
+            if (!loggedIn) return displayOutput("Please log in", true);
+            const fromAccount = document.getElementById("accountType").value;
+            const toAccount = document.getElementById("transferTo").value;
+            const amount = parseFloat(document.getElementById("amount").value);
+            displayOutput(accounts[fromAccount].transfer(accounts[toAccount], amount));
+        }
+
+        function applyLoan() {
+            if (!loggedIn) return displayOutput("Please log in", true);
+            const loanType = document.getElementById("loanType").value;
+            const amount = parseFloat(document.getElementById("amount").value);
+            const interestRate = { mortgage: 3.5, personal: 6, business: 5, car: 4.5 }[loanType];
+            loans.push(new Loan(loanType, amount, interestRate));
+            addHistory(`Applied for ${loanType} loan of $${amount}`);
+            displayOutput(`Applied for ${loanType} loan of $${amount} at ${interestRate}% interest`);
+        }
+
+        function viewLoans() {
+            if (!loggedIn) return displayOutput("Please log in", true);
+            if (loans.length === 0) {
+                displayOutput("No loans taken.");
+            } else {
+                const loanDetails = loans.map(loan => 
+                    `${loan.type}: $${loan.remaining} remaining, Interest: $${loan.calculateInterest().toFixed(2)}`
+                ).join("\n");
+                displayOutput(`Loans:\n${loanDetails}`);
+            }
+        }
+
+        // Additional Services Functions
+        function invest() {
+            if (!loggedIn) return displayOutput("Please log in", true);
+            const investmentType = document.getElementById("investmentType").value;
+            const amount = parseFloat(document.getElementById("amount").value);
+            investments.push({ type: investmentType, amount });
+            addHistory(`Invested $${amount} in ${investmentType}`);
+            displayOutput(`Invested $${amount} in ${investmentType}`);
+        }
+
+        function useCreditCard() {
+            if (!loggedIn) return displayOutput("Please log in", true);
+            const amount = parseFloat(document.getElementById("amount").value);
+            creditCardBalance += amount;
+            addHistory(`Charged $${amount} to credit card`);
+            displayOutput(`Charged $${amount} to credit card. Total: $${creditCardBalance}`);
+        }
+
+        function payCreditCard() {
+            if (!loggedIn) return displayOutput("Please log in", true);
+            const amount = parseFloat(document.getElementById("amount").value);
+            if (amount <= creditCardBalance) {
+                creditCardBalance -= amount;
+                addHistory(`Paid $${amount} towards credit card`);
+                displayOutput(`Paid $${amount} towards credit card. Remaining: $${creditCardBalance}`);
+            } else {
+                displayOutput("Payment exceeds credit card balance", true);
+            }
+        }
+
+        function useDebitCard() {
+            if (!loggedIn) return displayOutput("Please log in", true);
+            const accountType = document.getElementById("accountType").value;
+            const amount = parseFloat(document.getElementById("amount").value);
+            displayOutput(accounts[accountType].withdraw(amount) + " via debit card");
+        }
+
+        function buyInsurance() {
+            if (!loggedIn) return displayOutput("Please log in", true);
+            const insuranceType = document.getElementById("insuranceType").value;
+            insurance = insuranceType;
+            addHistory(`Purchased ${insuranceType} insurance`);
+            displayOutput(`Purchased ${insuranceType} insurance`);
+        }
+
+        function rentSafeDeposit() {
+            if (!loggedIn) return displayOutput("Please log in", true);
+            if (!safeDepositBox) {
+                safeDepositBox = true;
+                addHistory("Rented safe deposit box");
+                displayOutput("Safe deposit box rented");
+            } else {
+                displayOutput("You already have a safe deposit box");
+            }
+        }
+
+        function getFinancialAdvice() {
+            if (!loggedIn) return displayOutput("Please log in", true);
+            const totalBalance = Object.values(accounts).reduce((sum, acc) => sum + acc.balance, 0);
+            const advice = totalBalance > 5000 ? 
+                "Consider investing in low-risk bonds or mutual funds." : 
+                "Focus on saving more to build a stronger financial base.";
+            displayOutput(`Total balance: $${totalBalance}. ${advice}`);
+        }
+
+        function doorstepBanking() {
+            if (!loggedIn) return displayOutput("Please log in", true);
+            addHistory("Requested doorstep banking service");
+            displayOutput("Doorstep banking service requested");
+        }
+
+        function remittance() {
+            if (!loggedIn) return displayOutput("Please log in", true);
+            const amount = parseFloat(document.getElementById("amount").value);
+            if (accounts["checking"].balance >= amount) {
+                accounts["checking"].withdraw(amount);
+                addHistory(`Remitted $${amount} internationally`);
+                displayOutput(`Remitted $${amount} internationally`);
+            } else {
+                displayOutput("Insufficient funds for remittance", true);
+            }
+        }
+
+        // Initial state
+        document.getElementById("authSection").style.display = "block";
+    </script>
+</body>
+</html>

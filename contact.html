@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Bank Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0067B5;
+            --secondary: #FFD700;
+            --accent: #00C3FF;
+            --dark: #002244;
+            --light: #F0F8FF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+            url('bg3.jpg') no-repeat center center/cover;
+
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        .contact-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            color: var(--secondary);
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        p.intro-text {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--light);
+            font-weight: 300;
+        }
+
+        form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        label {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            pointer-events: none;
+            transition: 0.3s ease;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            transition: 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+
+        input:focus ~ label,
+        input:valid ~ label,
+        textarea:focus ~ label,
+        textarea:valid ~ label {
+            transform: translateY(-38px);
+            font-size: 0.9rem;
+            color: var(--accent);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: var(--dark);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 199, 255, 0.4);
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.2), 
+                transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        .contact-info {
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .contact-info h2 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: var(--light);
+        }
+
+        .contact-info img.icon {
+            width: 20px;
+            filter: invert(1);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes shine {
+            0% { left: -50%; }
+            100% { left: 150%; }
+        }
+
+        @media (max-width: 480px) {
+            .contact-container {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-container">
+        <h1>Get in Touch</h1>
+        <p class="intro-text">We're here to help! Reach out for any inquiries or support needs.</p>
+        
+        <form action="#" method="POST" id="contact-form">
+            <div class="input-group">
+                <input type="text" id="name" required>
+                <label for="name">Your Name</label>
+            </div>
+
+            <div class="input-group">
+                <input type="email" id="email" required>
+                <label for="email">Email Address</label>
+            </div>
+
+            <div class="input-group">
+                <textarea id="message" required></textarea>
+                <label for="message">Your Message</label>
+            </div>
+
+            <button type="submit">
+                <span>Send Message</span>
+            </button>
+        </form>
+
+        <div class="contact-info">
+            <h2>Contact Details</h2>
+            <p>
+                <img src="phone.png" class="icon" alt="phone">
+                +1 234 567 890
+            </p>
+            <p>
+                <img src="email.jpg" class="icon" alt="email">
+                support@bankmanagement.com
+            </p>
+            <p>
+                <img src="loca.png" class="icon" alt="location">
+                123 Finance Street, Bank City
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btn = this.querySelector('button');
+            btn.innerHTML = '<div class="loader"></div>';
+            btn.style.pointerEvents = 'none';
+
+            // Simulate API call
+            setTimeout(() => {
+                const successModal = document.createElement('div');
+                successModal.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: rgba(0, 0, 0, 0.9);
+                    color: var(--secondary);
+                    padding: 30px 50px;
+                    border-radius: 15px;
+                    text-align: center;
+                    backdrop-filter: blur(10px);
+                    animation: fadeInUp 0.5s ease;
+                `;
+                successModal.innerHTML = `
+                    <h3>🎉 Message Sent!</h3>
+                    <p>We'll respond within 24 hours</p>
+                `;
+                
+                document.body.appendChild(successModal);
+                setTimeout(() => successModal.remove(), 3000);
+                btn.innerHTML = '<span>Send Message</span>';
+                btn.style.pointerEvents = 'auto';
+                this.reset();
+            }, 1500);
+        });
+
+        // Add input validation
+        document.querySelectorAll('input, textarea').forEach(input => {
+            input.addEventListener('input', () => {
+                if (input.value) {
+                    input.parentNode.querySelector('label').style.color = '#00C3FF';
+                } else {
+                    input.parentNode.querySelector('label').style.color = 'rgba(255, 255, 255, 0.6)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

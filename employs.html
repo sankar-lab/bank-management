@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - Bank Management</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #e0f7fa, #80deea);
+            color: #333;
+            text-align: center;
+        }
+        header {
+            background: #0073e6;
+            padding: 20px;
+            font-size: 28px;
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border-bottom: 5px solid #005bb5;
+        }
+        main {
+            padding: 20px;
+        }
+        .team-section {
+            background: #fff;
+            padding: 30px;
+            margin: 20px auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            max-width: 900px;
+            transition: transform 0.3s;
+        }
+        .team-section:hover {
+            transform: scale(1.01);
+        }
+        .team-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .team-member {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid #0073e6;
+            margin-bottom: 10px;
+            transition: transform 0.3s;
+        }
+        .team-member img:hover {
+            transform: scale(1.1);
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="logo 2.jpg" alt="Logo">  
+                <h1>FEDERAL BANK</h1>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Search...">
+            </div>
+            <nav class="navbar">
+                <a href="home.html"><button>HOME</button></a>
+                <a href="about.html"><button>ABOUT US</button></a>
+                <a href="services.html"><button>SERVICES</button></a>
+                <a href="employs.html"><button>EMPLOYEES</button></a>
+
+                <a href="contact.html"><button>CONTACT</button></a>
+                <a href="login.html"><button>login</button></a>
+            </nav>
+        </div>
+    </header>
+    <header>
+        <h1>Our Bank Employees</h1>
+    </header>
+
+    <main>
+        <section class="team-section">
+            <h2>Meet Our Dedicated Team</h2>
+            <p>Our bank employees are committed to providing excellent financial services and customer support.</p>
+            <div class="team-container">
+                <div class="team-member">
+                    <img src="emp 1.avif" alt="Alice Brown">
+                    <h3>Alice Brown</h3>
+                    <p>Bank Manager</p>
+                </div>
+                <div class="team-member">
+                    <img src="emp 2.jpg" alt="Robert Green">
+                    <h3>Shradha Sharma</h3>
+                    <p>Loan Officer</p>
+                </div>
+                <div class="team-member">
+                    <img src="emp 3.jpg" alt="Emma Wilson">
+                    <h3>Radhika Gupta</h3>
+                    <p>Customer Service Representative</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+    
+            <!-- About Section -->
+            <div class="footer-section">
+                <h2>About Us</h2>
+                <p>We are dedicated to providing secure, efficient, and user-friendly banking solutions for individuals and businesses. Experience hassle-free financial management with us.</p>
+            </div>
+    
+            <!-- Services Section -->
+            <div class="footer-section">
+                <h2>Our Services</h2>
+                <ul>
+                    <li><a href="#accounts">Account Management</a></li>
+                    <li><a href="#loans">Loan Services</a></li>
+                    <li><a href="#investments">Investment Planning</a></li>
+                    <li><a href="#insurance">Insurance Solutions</a></li>
+                    <li><a href="#online-banking">Online Banking</a></li>
+                </ul>
+            </div>
+    
+            <!-- Quick Links Section -->
+            <div class="footer-section">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#careers">Careers</a></li>
+                    <li><a href="#faq">FAQs</a></li>
+                </ul>
+            </div>
+    
+            <!-- Contact Info Section -->
+            <div class="footer-section">
+                <h2>Contact Us</h2>
+                <p>Email: support@bankmanagement.com</p>
+                <p>Phone: +1 (234) 567-8901</p>
+                <p>Address: 123 Finance Street, Banking City</p>
+            </div>
+    
+            <!-- Newsletter Signup Section -->
+            <div class="footer-section">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter to receive the latest banking updates and offers.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+    
+            <!-- Custom Social Media Icons Section -->
+            <div class="footer-section">
+                <h2>Follow Us</h2>
+                <div class="custom-social-icons">
+                    <a href="#" class="icon facebook">facebook</a><br>
+                    <a href="#" class="icon twitter">twitter</a><br>
+                    <a href="#" class="icon linkedin">linkedin</a><br>
+                    <a href="#" class="icon instagram">instagram</a>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 Bank Management System. All rights reserved.</p>
+            <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms & Conditions</a></p>
+        </div>
+    </footer>
+    
+</body>
+</html>

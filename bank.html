@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Account Opening Form</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Form Container */
+        .form-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        /* Headings */
+        h2, h3 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        /* Labels */
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* Input Fields */
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        /* Radio Buttons & Checkboxes */
+        .radio-group, .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .radio-group input, .checkbox-group input {
+            margin: 0;
+        }
+
+        /* Submit Button */
+        button {
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Bank Account Opening Form</h2>
+        <form action="submit_form.php" method="post" enctype="multipart/form-data">
+
+            <!-- Personal Details -->
+            <h3>Personal Information</h3>
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label>Gender:</label>
+            <div class="radio-group">
+                <input type="radio" id="male" name="gender" value="Male" required>
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="Female">
+                <label for="female">Female</label>
+                <input type="radio" id="other" name="gender" value="Other">
+                <label for="other">Other</label>
+            </div>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="3" required></textarea>
+
+            <!-- Account Details -->
+            <h3>Account Details</h3>
+            <label for="account-type">Account Type:</label>
+            <select id="account-type" name="account-type" required>
+                <option value="">--Select--</option>
+                <option value="savings">Savings Account</option>
+                <option value="current">Current Account</option>
+                <option value="fixed">Fixed Deposit</option>
+            </select>
+
+            <label for="aadhaar">Aadhaar Number:</label>
+            <input type="text" id="aadhaar" name="aadhaar" pattern="\d{12}" placeholder="Enter 12-digit Aadhaar" required>
+
+            <label for="pan">PAN Number:</label>
+            <input type="text" id="pan" name="pan" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" placeholder="Enter PAN Number" required>
+
+            <label for="branch">Preferred Branch:</label>
+            <input type="text" id="branch" name="branch" required>
+
+            <label for="debit-card">Preferred Debit Card Type:</label>
+            <select id="debit-card" name="debit-card" required>
+                <option value="">--Select--</option>
+                <option value="classic">Classic Debit Card</option>
+                <option value="gold">Gold Debit Card</option>
+                <option value="platinum">Platinum Debit Card</option>
+            </select>
+
+            <!-- Banking Services -->
+            <h3>Banking Services</h3>
+            <label>Enable Internet Banking?</label>
+            <input type="checkbox" id="internet-banking" name="internet-banking">
+
+            <label>Enable Mobile Banking?</label>
+            <input type="checkbox" id="mobile-banking" name="mobile-banking">
+
+            <!-- Document Upload -->
+            <h3>Upload Documents</h3>
+            <label for="photo">Upload Passport Size Photo:</label>
+            <input type="file" id="photo" name="photo" required>
+
+            <label for="signature">Upload Signature:</label>
+            <input type="file" id="signature" name="signature" required>
+
+            <!-- Terms and Conditions -->
+            <div class="checkbox-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to the terms and conditions</label>
+            </div>
+
+            <button type="submit">Submit Application</button>
+        </form>
+    </div>
+</body>
+</html>
